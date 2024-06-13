@@ -24,10 +24,7 @@ class CustomerSerializer(serializers.HyperlinkedModelSerializer):
             excel_data = pd.read_excel(BytesIO(excel_file.read()))
             # Convert the DataFrame to a JSON string and assign it to file_data
             instance.file_data = excel_data.to_json(orient='records')
-            instance.save()
 
-
-        instance = super().create(validated_data)
         
         return instance
 
